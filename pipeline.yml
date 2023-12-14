@@ -1,0 +1,13 @@
+resources:
+  - name: concourse-git-session
+    type: git
+    source:
+      uri: https://github.com/pgajendrapandian/concourse-session.git
+      branch: main
+
+jobs:
+  - name: test-pipeline-resource-file
+    plan:
+      - get: concourse-git-session
+      - task: run-app-task
+        file: concourse-git-session/tasks/app.yml
